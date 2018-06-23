@@ -12,12 +12,8 @@ class XmlReader(ReaderCache):
         root = ElementTree.fromstring(file_data)
 
         self.component_name = root.find("./args/argv/exe").text
-        print(self.component_name)
 
-        extractded_data = []
-        for _tag in root.iter('error'): #TODO: replace this with tag variable
-            extractded_data.append(_tag)
-
+        extractded_data = [_tag for _tag in root.iter('error')]
 
         return extractded_data
 

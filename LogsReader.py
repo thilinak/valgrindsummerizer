@@ -12,12 +12,14 @@ class LogsReader():
         if (len(file_names) == 0):
             raise RuntimeError('No files found', directory, file_extension) from os.error
 
+        read_file = self.read_file
+        on_read_data = self._reader_listner.on_read_data
         for file_name in file_names:
-            file_data = self.read_file(file_name)
+            file_data = read_file(file_name)
 
             if (len(file_data) == 0):
                 raise  RuntimeError('No data in file', file_name) from os.error
-            self._reader_listner.on_read_data(file_data)
+            on_read_data(file_data)
 
     @staticmethod
     def get_log_file_paths(directory: str, file_extention: str) -> list:
