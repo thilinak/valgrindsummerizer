@@ -28,11 +28,3 @@ class XmlReader(ReaderCache):
                 if type in _type:
                     for blocks in _data:
                         subscriber.update(blocks, self.component_name)  # TODO: for a single type there can be more than one subscribers
-
-
-'''
-if __name__ == '__main__':
-    _reader_listner = XmlReader()
-    _logs_reader = LogsReader(_reader_listner)
-    _logs_reader.read_files('D:\Valgrind\XML')
-'''
